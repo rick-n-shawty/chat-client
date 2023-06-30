@@ -1,5 +1,58 @@
 .home{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
     .chats-column{
-        
+        display: flex;
+        flex-direction: column;
+        background-color: lightblue;
+        height: 100%;
+        .room{
+            display: flex;
+            width: 30%;
+            align-items: center;
+            justify-content: space-between;
+            background-color: red;
+            border-radius: 6px;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            height: 4rem;
+            .room_name{
+                font-weight: 700;
+            }
+            .room_joinBtn{
+                button{
+                    cursor: pointer;
+                }
+            }
+        }
+
+    }
+}
+
+
+.chat-room{
+    background-color: lightblue;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .container{
+        background-color: red;
+        width: 100%;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        .messages{
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+        }
+        .input-container{
+            display: flex;
+            justify-content: center;
+            width: 50%;
+        }
     }
 }

@@ -1,1 +1,54 @@
-/*# sourceMappingURL=Home.css.map */
+.home {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.home .chats-column {
+  display: flex;
+  flex-direction: column;
+  background-color: lightblue;
+  height: 100%;
+}
+.home .chats-column .room {
+  display: flex;
+  width: 30%;
+  align-items: center;
+  justify-content: space-between;
+  background-color: red;
+  border-radius: 6px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  height: 4rem;
+}
+.home .chats-column .room .room_name {
+  font-weight: 700;
+}
+.home .chats-column .room .room_joinBtn button {
+  cursor: pointer;
+}
+
+.chat-room {
+  background-color: lightblue;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.chat-room .container {
+  background-color: red;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.chat-room .container .messages {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.chat-room .container .input-container {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}/*# sourceMappingURL=Home.css.map */

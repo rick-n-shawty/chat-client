@@ -1,39 +1,47 @@
 import { io } from 'socket.io-client';
-import { UserContext } from "../App";
+import { UserContext, SocketContext } from "../App";
 import { useContext, createContext } from "react";
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import ChatRoom from './ChatRoom';
-export const SocketContext = createContext([])
 export default function Home(){
     const [user, setUser] = useContext(UserContext)
-    const [socket, setSocket] = useState(null)
+    const [socket, setSocket] = useContext(SocketContext)
     const [chats, setChatRooms] = useState([])
     const navigate = useNavigate()
+    const joinRoom = (roomId, roomName) => {
+        console.log(user)
+        console.log(roomId)
+        return navigate(`/chatroom/?roomId=${roomId}&roomName=${roomName}`)
+    }
+    
     useEffect(() => {
-        if(user.accessToken){
-            // query all of the chat rooms 
-            const getAllRooms = async () => {
-                try{
-                    const res = await axios.get('/rooms', {headers: {'Authorization': `Bearer ${user.accessToken}`}})
-                    console.log(await res.data)
-                    const { chatRooms } = await res.data
-                    const arr = chatRooms.map(item => {
-                        return <div key={item._id}>{item.name}</div>
-                    })
-                    setChatRooms(arr)
-                }catch(err){
-                    console.log(err)
-                }
+        const getAllRooms = async () => {
+            try{
+                const res = await axios.get('/rooms', {headers: {'Authorization': `Bearer ${user.accessToken}`}})
+                const { chatRooms } = await res.data
+                console.log(chatRooms)
+                const arr = chatRooms.map(item => {
+                    return <div key={item._id} className='room' id={item._id}>
+                        <div className='room_name'>{item.name}</div>
+                        <div className='room_joinBtn'>
+                            <button onClick={() => joinRoom(item._id, item.name)}>JOIN</button>
+                        </div>
+                    </div>
+                })
+                setChatRooms(arr)
+            }catch(err){
+                console.log(err)
             }
+        }
+        if(user.accessToken){
             getAllRooms()
-            // establish web socket connection 
             const newSocket = io('localhost:8080', {transports: ["websocket", "polling"]})
-            setSocket(newSocket)
+            setSocket( newSocket )
             newSocket.on('connect', () => console.log('Socket connection is established'))
         }
-    }, [])
+    }, [user])
     return(
         <SocketContext.Provider value={[socket, setSocket]}>
             <div className="home">
