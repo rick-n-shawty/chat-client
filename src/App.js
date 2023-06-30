@@ -10,7 +10,7 @@ export const UserContext = createContext([])
 export const SocketContext = createContext([])
 const REMOTE_URL = 'https://chat-server-lgtp.onrender.com'
 const LOCAL_URL = 'http://localhost:8080/api/v1'
-const URL = LOCAL_URL
+const URL = REMOTE_URL
 function App() {
   const [user, setUser] = useState({})
   const [socket, setSocket] = useState(null)

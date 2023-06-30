@@ -37,7 +37,7 @@ export default function Home(){
         }
         if(user.accessToken){
             getAllRooms()
-            const newSocket = io('localhost:8080', {transports: ["websocket", "polling"]})
+            const newSocket = io('https://chat-server-lgtp.onrender.com', {transports: ["websocket", "polling"]})
             setSocket( newSocket )
             newSocket.on('connect', () => console.log('Socket connection is established'))
         }
