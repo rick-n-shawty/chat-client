@@ -10,7 +10,7 @@ export default function Login(){
     const submitForm = async (e) => {
         try{
             e.preventDefault()
-            const res = await axios.post('/login', {email, password}, {headers: {"Content-Type": "application/json"}})
+            const res = await axios.post('/api/v1/login', {email, password}, {headers: {"Content-Type": "application/json"}})
             console.log(await res.data)
             const {accessToken, refreshToken} = await res.data 
             if(accessToken && refreshToken){
