@@ -19,7 +19,7 @@ export default function Home(){
     useEffect(() => {
         const getAllRooms = async () => {
             try{
-                const res = await axios.get('/rooms', {headers: {'Authorization': `Bearer ${user.accessToken}`}})
+                const res = await axios.get('/api/v1/rooms', {headers: {'Authorization': `Bearer ${user.accessToken}`}})
                 const { chatRooms } = await res.data
                 console.log(chatRooms)
                 const arr = chatRooms.map(item => {

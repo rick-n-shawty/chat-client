@@ -20,7 +20,7 @@ function App() {
     const getRefresh = async () => {
       try{
         const refresh = localStorage.getItem('refreshToken')
-        const res = await axios.get('refresh', {headers: {"Authorization": `Bearer ${refresh}`}})
+        const res = await axios.get('/api/v1/refresh', {headers: {"Authorization": `Bearer ${refresh}`}})
         const {accessToken, refreshToken} = await res.data 
         if(!accessToken || !refreshToken) return navigate('/login')
         else{
