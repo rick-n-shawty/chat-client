@@ -4,51 +4,67 @@
   height: 100%;
   width: 100%;
 }
-.home .chats-column {
-  display: flex;
-  flex-direction: column;
-  background-color: lightblue;
+.home .container {
+  width: 100%;
   height: 100%;
 }
-.home .chats-column .room {
+.home .container .left {
   display: flex;
-  width: 30%;
-  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  gap: 1rem;
+}
+.home .container .left .room {
+  display: flex;
+  width: 100%;
   justify-content: space-between;
-  background-color: red;
-  border-radius: 6px;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  height: 4rem;
+  height: 10%;
+  border-radius: 4px;
+  padding: 1rem 1rem 1rem 1rem;
+  align-items: center;
+  background-color: rgb(179, 179, 215);
 }
-.home .chats-column .room .room_name {
-  font-weight: 700;
-}
-.home .chats-column .room .room_joinBtn button {
+.home .container .left .room button {
   cursor: pointer;
 }
 
 .chat-room {
-  background-color: lightblue;
-  height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: column;
+  min-height: 100%;
+  width: 100%;
+  background-color: lightblue;
+  align-items: center;
 }
 .chat-room .container {
-  background-color: red;
-  width: 100%;
-  align-items: center;
   display: flex;
   flex-direction: column;
+  width: 70%;
+  height: 100%;
+  align-items: center;
+  padding: 1rem 2rem 1rem 2rem;
+  background-color: whitesmoke;
 }
 .chat-room .container .messages {
   display: flex;
+  width: 100%;
   flex-direction: column;
-  width: 50%;
+  gap: 0.5rem;
 }
-.chat-room .container .input-container {
+.chat-room .container .messages .text {
   display: flex;
-  justify-content: center;
-  width: 50%;
+  flex-direction: column;
+  background-color: rgb(189, 117, 117);
+  border-radius: 5px;
+  padding-left: 0.4rem;
+}
+.chat-room .container .messages .text .sender {
+  display: flex;
+  border-bottom: 1px solid black;
+}
+.chat-room .container .messages .text .msg p {
+  margin: 0;
+  font-size: 1.2rem;
+  word-break: normal;
 }/*# sourceMappingURL=Home.css.map */

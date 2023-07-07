@@ -5,51 +5,58 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import ChatRoom from './ChatRoom';
+import Header from './Header';
 export default function Home(){
     const [user, setUser] = useContext(UserContext)
     const [socket, setSocket] = useContext(SocketContext)
-    const [chats, setChatRooms] = useState([])
+    const [rooms, setRooms] = useState([])
+    const [logMsg, setLog] = useState('')
     const navigate = useNavigate()
-    const joinRoom = (roomId, roomName) => {
-        console.log(user)
-        console.log(roomId)
-        return navigate(`/chatroom/?roomId=${roomId}&roomName=${roomName}`)
+    const joinGroup = (id, name) => {
+        return navigate(`/chatroom/?id=${id}&name=${name}`)
     }
-    
-    useEffect(() => {
-        const getAllRooms = async () => {
-            try{
-                const res = await axios.get('/api/v1/rooms', {headers: {'Authorization': `Bearer ${user.accessToken}`}})
-                const { chatRooms } = await res.data
-                console.log(chatRooms)
-                const arr = chatRooms.map(item => {
-                    return <div key={item._id} className='room' id={item._id}>
-                        <div className='room_name'>{item.name}</div>
-                        <div className='room_joinBtn'>
-                            <button onClick={() => joinRoom(item._id, item.name)}>JOIN</button>
-                        </div>
+    const establishConnection = async () => {
+        console.log('running')
+        try{
+            setLog('connecting...')
+            const newSocket = io('localhost:8080', {transports: ['websocket', 'polling']})
+            setSocket(newSocket)
+            const res = await axios.get('/api/v1/rooms', {headers: {'Authorization': `Bearer ${user.accessToken}`, "Content-Type": "application/json"}})
+            const {chatRooms} = await res.data
+            const arr = chatRooms.map(item => {
+                return(
+                    <div key={item._id} className='room'>
+                        <div>{item.name}</div>
+                        <button onClick={(e) => joinGroup(item._id, item.name)}>JOIN</button>
                     </div>
-                })
-                setChatRooms(arr)
-            }catch(err){
-                console.log(err)
-            }
+                )
+            }) 
+            setRooms(arr)
+            console.log('connection is established')
+            setLog('')
+            return true
+        }catch(err){
+            console.log(err)
+            return false
         }
-        if(user.accessToken){
-            getAllRooms()
-            const newSocket = io('https://chat-server-lgtp.onrender.com', {transports: ["websocket", "polling"]})
-            setSocket( newSocket )
-            newSocket.on('connect', () => console.log('Socket connection is established'))
+    }
+    useEffect(() => {
+        establishConnection()
+        return () => {
+            if(socket) {
+                socket.close()
+            }
         }
     }, [user])
     return(
-        <SocketContext.Provider value={[socket, setSocket]}>
-            <div className="home">
-                <h1>Home page</h1>
-                <div className='chats-column'>
-                    {chats}
+        <div className="home">
+            <Header/>
+            <div className='container'>
+                {logMsg ? <h1>{logMsg}</h1>: ""}
+                <div className='left'>
+                    {rooms}
                 </div>
             </div>
-        </SocketContext.Provider>
+        </div>
     )
 }

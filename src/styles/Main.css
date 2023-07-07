@@ -1,1 +1,73 @@
-@import "./Home.css";/*# sourceMappingURL=Main.css.map */
+@import "./Home.css";
+.register-page form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-page form {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem 1rem 2rem;
+  width: 100%;
+  background-color: lightblue;
+}
+header .center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 90%;
+  position: relative;
+}
+header .center input {
+  width: 60%;
+  outline: none;
+  height: 50%;
+  border-radius: 4px;
+  padding-left: 1rem;
+  border: none;
+  position: relative;
+}
+header .center .popup {
+  display: none;
+}
+header .center .popup.active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: red;
+  width: 100%;
+  top: 125%;
+  gap: 0.5rem;
+}
+header .center .popup.active .account-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header .center button {
+  height: 50%;
+  margin-left: 0.2rem;
+  cursor: pointer;
+}
+header .left, header .right {
+  width: 30%;
+  display: flex;
+  height: 90%;
+  align-items: center;
+}
+header .right ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+header .right ul li a {
+  text-decoration: none;
+}/*# sourceMappingURL=Main.css.map */
