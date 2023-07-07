@@ -19,7 +19,7 @@ export default function Home(){
         console.log('running')
         try{
             setLog('connecting...')
-            const newSocket = io('localhost:8080', {transports: ['websocket', 'polling']})
+            const newSocket = io('https://chat-server-lgtp.onrender.com', {transports: ['websocket', 'polling']})
             setSocket(newSocket)
             const res = await axios.get('/api/v1/rooms', {headers: {'Authorization': `Bearer ${user.accessToken}`, "Content-Type": "application/json"}})
             const {chatRooms} = await res.data
