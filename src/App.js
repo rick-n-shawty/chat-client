@@ -7,7 +7,7 @@ import ChatRoom from './components/ChatRoom';
 import Home from './components/Home';
 import Register from './components/Register';
 import CreateGroup from './components/CreateGroup';
-
+import FindPpl from './components/FindPeople';
 import Profile from './components/Profile';
 export const UserContext = createContext([])
 export const SocketContext = createContext([])
@@ -16,17 +16,17 @@ const LOCAL_URL = 'http://localhost:8080'
 function App() {
   const [user, setUser] = useState({})
   const [socket, setSocket] = useState(null)
-  axios.defaults.baseURL = REMOTE_URL
+  axios.defaults.baseURL = LOCAL_URL
   const navigate = useNavigate()
   useEffect(() => {
     const getRefresh = async () => {
       try{
         const refresh = localStorage.getItem('refreshToken')
         const res = await axios.get('/api/v1/refresh', {headers: {"Authorization": `Bearer ${refresh}`}})
-        const {accessToken, refreshToken} = await res.data 
-        if(!accessToken || !refreshToken) return navigate('/login')
+        const {accessToken, refreshToken, email} = await res.data 
+        if(!accessToken || !refreshToken || !email) return navigate('/login')
         else{
-          setUser({accessToken: accessToken})
+          setUser({accessToken: accessToken, email: email})
         }
       }catch(err){
         return navigate('/login')
@@ -48,6 +48,7 @@ function App() {
               <Route path='/makegroup' element={<CreateGroup/>}/>
               <Route path='/chatroom' element={<ChatRoom/>}/>
               <Route path='/register' element={<Register/>}/>
+              <Route path='/findpeople' element={<FindPpl/>}/>
             </Routes>
           </>
         </UserContext.Provider>

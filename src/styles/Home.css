@@ -9,15 +9,17 @@
   height: 100%;
 }
 .home .container .left {
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  width: 50%;
+  align-items: center;
+  width: 100%;
   height: 100%;
   gap: 1rem;
 }
 .home .container .left .room {
   display: flex;
-  width: 100%;
+  width: 30%;
   justify-content: space-between;
   height: 10%;
   border-radius: 4px;
@@ -67,4 +69,124 @@
   margin: 0;
   font-size: 1.2rem;
   word-break: normal;
+}
+
+.create-group-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+.create-group-container .wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  align-items: center;
+  height: 100%;
+  background-color: lightblue;
+}
+.create-group-container .wrapper form {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+}
+.create-group-container .wrapper .added-accounts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 80%;
+  margin: 1rem;
+}
+.create-group-container .wrapper .added-accounts .added-acc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  border-radius: 4px;
+  height: 2rem;
+  background-color: lightgreen;
+}
+.create-group-container .wrapper .added-accounts .added-acc p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+.create-group-container .wrapper .suggested-accounts {
+  display: flex;
+  margin: 1rem;
+  gap: 0.5rem;
+  flex-direction: column;
+  width: 80%;
+  align-items: center;
+}
+.create-group-container .wrapper .suggested-accounts .account-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lightcoral;
+  border-radius: 4px;
+  width: 50%;
+  height: 2rem;
+  padding: 0 1rem 0 1rem;
+}
+.create-group-container .wrapper .suggested-accounts .account-container .left {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.create-group-container .wrapper .suggested-accounts .account-container button {
+  cursor: pointer;
+}
+
+.find-ppl-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}
+.find-ppl-container .wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 100%;
+  align-items: center;
+}
+.find-ppl-container .wrapper form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.find-ppl-container .wrapper form input {
+  height: 2rem;
+  width: 20%;
+  border-radius: 4px;
+}
+.find-ppl-container .wrapper .accounts {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  width: 100%;
+  align-items: center;
+  gap: 0.6rem;
+}
+.find-ppl-container .wrapper .accounts .account-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 40%;
+  background-color: lightblue;
+  height: 2rem;
+  padding: 0 1rem 0 1rem;
+  border-radius: 0.4rem;
+}
+.find-ppl-container .wrapper .accounts .account-div .left {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.find-ppl-container .wrapper .accounts .account-div button {
+  cursor: pointer;
+  font-weight: 600;
 }/*# sourceMappingURL=Home.css.map */

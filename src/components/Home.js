@@ -19,17 +19,29 @@ export default function Home(){
         console.log('running')
         try{
             setLog('connecting...')
-            const newSocket = io('https://chat-server-lgtp.onrender.com', {transports: ['websocket', 'polling']})
+            const newSocket = io('localhost:8080', {transports: ['websocket', 'polling']})
             setSocket(newSocket)
-            const res = await axios.get('/api/v1/rooms', {headers: {'Authorization': `Bearer ${user.accessToken}`, "Content-Type": "application/json"}})
-            const {chatRooms} = await res.data
-            const arr = chatRooms.map(item => {
-                return(
-                    <div key={item._id} className='room'>
-                        <div>{item.name}</div>
+            const res = await axios.get('/api/v1/chats', {headers: {'Authorization': `Bearer ${user.accessToken}`, "Content-Type": "application/json"}})
+            const { chats } = await res.data
+
+            const arr = chats.map(item => {
+                if(item.groupName){
+                    const el = <div key={item._id} className='room'>
+                        <div>{item.groupName}</div>
                         <button onClick={(e) => joinGroup(item._id, item.name)}>JOIN</button>
                     </div>
-                )
+                    return el
+                }else{
+                    let name = ''
+                    for(const email of item.chatName){
+                        if(email !== user.email) name = email 
+                    }
+                    const el = <div key={item._id} className='room'>
+                        <div>{name}</div>
+                        <button>Text</button>
+                    </div>
+                    return el
+                }
             }) 
             setRooms(arr)
             console.log('connection is established')
