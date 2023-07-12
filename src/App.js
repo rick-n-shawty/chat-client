@@ -9,6 +9,7 @@ import Register from './components/Register';
 import CreateGroup from './components/CreateGroup';
 import FindPpl from './components/FindPeople';
 import Profile from './components/Profile';
+import Group from './components/Group';
 export const UserContext = createContext([])
 export const SocketContext = createContext([])
 const REMOTE_URL = 'https://chat-server-lgtp.onrender.com'
@@ -49,6 +50,7 @@ function App() {
               <Route path='/chatroom' element={<ChatRoom/>}/>
               <Route path='/register' element={<Register/>}/>
               <Route path='/findpeople' element={<FindPpl/>}/>
+              <Route path='/group' element={<Group/>}/>
             </Routes>
           </>
         </UserContext.Provider>

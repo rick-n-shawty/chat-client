@@ -1,4 +1,5 @@
 @import "./Home.css";
+@import "./Group.css";
 .register-page form {
   display: flex;
   flex-direction: column;
@@ -9,7 +10,7 @@
   flex-direction: column;
 }
 
-header {
+.main-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -17,7 +18,7 @@ header {
   width: 100%;
   background-color: lightblue;
 }
-header .center {
+.main-header .center {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,7 +26,7 @@ header .center {
   height: 90%;
   position: relative;
 }
-header .center input {
+.main-header .center input {
   width: 60%;
   outline: none;
   height: 50%;
@@ -34,10 +35,10 @@ header .center input {
   border: none;
   position: relative;
 }
-header .center .popup {
+.main-header .center .popup {
   display: none;
 }
-header .center .popup.active {
+.main-header .center .popup.active {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -46,28 +47,28 @@ header .center .popup.active {
   top: 125%;
   gap: 0.5rem;
 }
-header .center .popup.active .account-container {
+.main-header .center .popup.active .account-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-header .center button {
+.main-header .center button {
   height: 50%;
   margin-left: 0.2rem;
   cursor: pointer;
 }
-header .left, header .right {
+.main-header .left, .main-header .right {
   width: 30%;
   display: flex;
   height: 90%;
   align-items: center;
 }
-header .right ul {
+.main-header .right ul {
   list-style: none;
   display: flex;
   justify-content: space-between;
   width: 80%;
 }
-header .right ul li a {
+.main-header .right ul li a {
   text-decoration: none;
 }/*# sourceMappingURL=Main.css.map */

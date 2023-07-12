@@ -1,0 +1,78 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: lightcoral;
+}
+.group .group_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3rem 1rem 3rem;
+  background-color: lightblue;
+}
+.group .group_header__left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.group .group_header__left p {
+  margin: 0;
+}
+.group .group_header__left .name {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.group .group_header__right button {
+  outline: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 4px;
+  border: none;
+  background-color: rgb(157, 57, 57);
+  font-weight: 600;
+  color: whitesmoke;
+}
+.group .group_header__right button:hover {
+  opacity: 0.9;
+}
+.group .group_chat-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+}
+.group .group_input-box {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4rem;
+  align-items: center;
+  justify-content: center;
+  background-color: lightgreen;
+}
+.group .group_input-box__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  height: 100%;
+  width: 50%;
+}
+.group .group_input-box__wrapper input {
+  height: 100%;
+  width: 70%;
+  outline: none;
+  border-radius: 4px;
+  padding-left: 1rem;
+}
+.group .group_input-box__wrapper button {
+  cursor: pointer;
+  height: 100%;
+  width: 30%;
+}/*# sourceMappingURL=Group.css.map */

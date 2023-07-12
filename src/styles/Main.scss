@@ -1,5 +1,5 @@
 @import"./Home.css";
-
+@import"./Group.css";
 .register-page{
     form{
         display: flex;
@@ -13,7 +13,7 @@
         flex-direction: column;
     }
 }
-header{
+.main-header{
     display: flex;
     align-items: center;
     justify-content: space-between;

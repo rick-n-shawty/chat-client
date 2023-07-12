@@ -8,7 +8,7 @@ export default function Header(){
 
     }, [user])
     return(
-        <header>
+        <header className='main-header'>
             <div className="left">
                 <h1>Chat App!</h1>
             </div>

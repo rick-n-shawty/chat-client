@@ -13,7 +13,7 @@ export default function Home(){
     const [logMsg, setLog] = useState('')
     const navigate = useNavigate()
     const joinGroup = (id, name) => {
-        return navigate(`/chatroom/?id=${id}&name=${name}`)
+        return navigate(`/group/?id=${id}&groupName=${name}`)
     }
     const establishConnection = async () => {
         console.log('running')
@@ -28,7 +28,7 @@ export default function Home(){
                 if(item.groupName){
                     const el = <div key={item._id} className='room'>
                         <div>{item.groupName}</div>
-                        <button onClick={(e) => joinGroup(item._id, item.name)}>JOIN</button>
+                        <button onClick={(e) => joinGroup(item._id, item.groupName)}>JOIN</button>
                     </div>
                     return el
                 }else{
