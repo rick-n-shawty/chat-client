@@ -3,14 +3,18 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: lightcoral;
 }
 .group .group_header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  height: 10%;
+  left: 0;
+  right: 0;
   padding: 1rem 3rem 1rem 3rem;
-  background-color: lightblue;
+  background-color: rgb(31, 44, 51);
+  color: #EDF8F5;
 }
 .group .group_header__left {
   display: flex;
@@ -37,13 +41,71 @@
 .group .group_header__right button:hover {
   opacity: 0.9;
 }
-.group .group_chat-scroll {
+.group .group_chat-container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+.group .group_chat-container .group_chat-scroll {
+  padding-top: 2rem;
+  margin-top: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: auto;
-  height: 100%;
   width: 100%;
+  background-color: rgb(39, 52, 67);
+  gap: 0.5rem;
+  padding-bottom: 4rem;
+}
+.group .group_chat-container .group_chat-scroll .message-div-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  width: 80%;
+  min-height: 5%;
+}
+.group .group_chat-container .group_chat-scroll .message-div-wrapper .message-div {
+  display: flex;
+  max-width: 50%;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 5px;
+  height: 100%;
+  background-color: #455A64;
+  color: #EDF8F5;
+  gap: 0.5rem;
+}
+.group .group_chat-container .group_chat-scroll .message-div-wrapper .message-div__left {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+.group .group_chat-container .group_chat-scroll .message-div-wrapper .message-div__left .name {
+  display: flex;
+  height: 35%;
+  font-size: 0.9rem;
+  color: #34B7F1;
+}
+.group .group_chat-container .group_chat-scroll .message-div-wrapper .message-div__left .content {
+  display: flex;
+  align-items: center;
+  height: 65%;
+}
+.group .group_chat-container .group_chat-scroll .message-div-wrapper .message-div__left .content p {
+  margin: 0;
+  word-break: normal;
+}
+.group .group_chat-container .group_chat-scroll .message-div-wrapper .message-div__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  font-size: 0.8rem;
+  width: 10%;
+}
+.group .group_chat-container .group_chat-scroll .message-div-wrapper.mine {
+  justify-content: flex-end;
+}
+.group .group_chat-container .group_chat-scroll .message-div-wrapper.mine .message-div.mine {
+  background-color: #015c4b;
 }
 .group .group_input-box {
   display: flex;
@@ -51,16 +113,14 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 4rem;
+  height: 5%;
   align-items: center;
   justify-content: center;
-  background-color: lightgreen;
 }
 .group .group_input-box__wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: red;
   height: 100%;
   width: 50%;
 }

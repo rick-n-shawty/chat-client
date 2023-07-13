@@ -12,9 +12,9 @@ export default function Login(){
             e.preventDefault()
             const res = await axios.post('/api/v1/login', {email, password}, {headers: {"Content-Type": "application/json"}})
             console.log(await res.data)
-            const {accessToken, refreshToken} = await res.data 
+            const {accessToken, refreshToken, email} = await res.data 
             if(accessToken && refreshToken){
-                setUser({accessToken})
+                setUser({accessToken, email})
                 localStorage.setItem('refreshToken', refreshToken)
                 return navigate('/')
             }

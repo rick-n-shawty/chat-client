@@ -17,7 +17,7 @@ const LOCAL_URL = 'http://localhost:8080'
 function App() {
   const [user, setUser] = useState({})
   const [socket, setSocket] = useState(null)
-  axios.defaults.baseURL = LOCAL_URL
+  axios.defaults.baseURL = REMOTE_URL
   const navigate = useNavigate()
   useEffect(() => {
     const getRefresh = async () => {

@@ -1,6 +1,7 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { SocketContext, UserContext } from "../App";
 import { useState, useEffect, useContext, useMemo } from 'react';
+import Message from "../sub-components/message-card";
 export default function Group(){
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search)
@@ -18,6 +19,7 @@ export default function Group(){
 
     useEffect(() => {
         if(socket){
+            console.log('user object', user)
             const payload = {
                 accessToken: user.accessToken,
                 groupId: id
@@ -25,17 +27,15 @@ export default function Group(){
             socket.emit('joinGroup', payload)
             const handleMessage = (data) => {
                 if(Array.isArray(data)){
-                    console.log('I GOT THE ARRAY')
                     const arr = data.map(item => {
                         return (
-                            <div className="" key={item._id}>{item.content}</div>
+                            <Message key={item._id} data={item} isGroup={true} isMine={ user.email === item.senderName }/>
                         )
                     })
                     setMessages(arr)
                 }else if(typeof data === 'object' && data !== null){
-                    console.log('I GOT THE OBJECT')
                     setMessages(prev => {
-                        const el = <div key={data._id}>{data.content}</div>
+                        const el = <Message key={data._id} data={data} isGroup={true} isMine={ data.senderName === user.email }/>
                         const arr = [...prev, el]
                         return arr
                     })
@@ -48,13 +48,15 @@ export default function Group(){
             }
         }
     }, [socket])
-    const sendMessage = () => {
+    const sendMessage = (e) => {
+        e.preventDefault()
         const payload = {
             accessToken: user.accessToken,
             msg,
             chatId: id
         }
         socket.emit('sendGroupMessage', id, payload)
+        setMsg('')
     }
     return(
         <div className="group">
@@ -67,14 +69,16 @@ export default function Group(){
                     <button onClick={(e) => leaveRoom()}>Leave room</button>
                 </div>
             </header>
-            <div className="group_chat-scroll">
-                { messages }
+            <div className="group_chat-container">
+                <div className="group_chat-scroll">
+                    { messages }
+                </div>
             </div>
             <div className="group_input-box">
-                <div className="group_input-box__wrapper">
+                <form onSubmit={sendMessage} className="group_input-box__wrapper">
                     <input placeholder="Type a message" value={msg} onChange={(e) => setMsg(e.target.value)}/>
-                    <button onClick={sendMessage}>send</button>
-                </div>
+                    <button>send</button>
+                </form>
             </div>
         </div>
     )
